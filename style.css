@@ -1,6 +1,8 @@
 /* RESETS */
 body,
-p {
+p,
+h2,
+h3 {
   margin: 0;
   padding: 0;
 }
@@ -71,6 +73,7 @@ p {
 }
 
 .menu-popup {
+  position: relative;
   height: 80%;
   width: 70%;
   background-color: white;
@@ -80,6 +83,19 @@ p {
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+}
+
+.exit-button {
+  position: absolute;
+  height: 40px;
+  width: 60px;
+  top: -20px;
+  right: -20px;
+  border-radius: 10px;
+}
+
+.exit-text {
+  font-size: 12px;
 }
 
 .card {
@@ -97,17 +113,76 @@ p {
 }
 
 .food-name {
-  font-size: 150%;
+  font-size: 22px;
 }
 
 .food-description {
-  font-size: 100%;
+  font-size: 14px;
   text-align: center;
   padding: 10px 5px;
 }
 
 .food-price {
-  font-size: 125%;
+  font-size: 16px;
+}
+
+/* CART FUCTIONALITY */
+.cart-popup {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hide {
+  display: none;
+}
+
+.cart-menu {
+  position: relative;
+  height: 80%;
+  width: 70%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.cart-header {
+  position: absolute;
+  top: 20px;
+  font-size: 40px;
+}
+
+.cart-subheader {
+  margin: 15px 0;
+}
+
+.cart-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.list-of-items {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cart-list-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 /* MEDIA QUERIES */
@@ -128,5 +203,19 @@ p {
     padding: 50px 0;
     width: 40vw;
     margin: 0;
+  }
+
+  .food-name {
+    font-size: 22px;
+  }
+
+  .food-description {
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 5px;
+  }
+
+  .food-price {
+    font-size: 18px;
   }
 }
