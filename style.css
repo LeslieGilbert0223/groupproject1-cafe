@@ -185,6 +185,26 @@ h3 {
   justify-content: space-between;
 }
 
+.cash-pay {
+  margin: 15px;
+}
+
+.cash-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.change-button {
+  margin-top: 10px;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
   .header {
@@ -217,5 +237,9 @@ h3 {
 
   .food-price {
     font-size: 18px;
+  }
+
+  .cart-menu {
+    width: 30%;
   }
 }

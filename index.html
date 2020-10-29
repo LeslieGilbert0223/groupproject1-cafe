@@ -51,6 +51,40 @@
             <p class="total-amount">$0.00</p>
           </div>
           <button>Checkout</button>
+          <button class="cash-pay">Pay with Cash</button>
+          <div>
+            <form class="cash-form">
+              <label for="cash">Cash Tendered</label>
+              <input type="number" id="cash" name="cash" />
+              <button class="change-button">Get Change</button>
+            </form>
+            <p>Change - $0.00</p>
+          </div>
+          <button class="card-pay">Pay with Card</button>
+          <div class="hide">
+            <form class="card-form">
+              <label for="card-number">Card Number</label>
+              <input
+                id="card-number"
+                name="card-number"
+                type="tel"
+                inputmode="numeric"
+                pattern="[0-9\s]{13,19}"
+                maxlength="19"
+                placeholder="xxxx xxxx xxxx xxxx"
+              />
+              <label for="exp-date">Exp. Date</label>
+              <input
+                type="month"
+                id="exp-date"
+                name="exp-date"
+                placeholder="XX/XX"
+              />
+              <label for="cvv">cvv</label>
+              <input type="number" name="cvv" id="cvv" />
+              <button>Process Card</button>
+            </form>
+          </div>
         </div>
       </div>
     </main>
