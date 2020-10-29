@@ -28,8 +28,66 @@
       <div class="popup hide">
         <div class="menu-popup"></div>
       </div>
+      <div class="cart-popup hide">
+        <div class="cart-menu">
+          <h2 class="cart-header">Your Cart</h2>
+          <button class="exit-button">
+            <p class="exit-text">Back to Menu</p>
+          </button>
+          <div class="list-of-items">
+            <h3 class="cart-subheader">Your Items</h3>
+            <div></div>
+          </div>
+          <div class="cart-items">
+            <p>Subtotal</p>
+            <p class="subtotal-amount">$0.00</p>
+          </div>
+          <div class="cart-items">
+            <p>Taxes</p>
+            <p class="taxes-amount">$0.00</p>
+          </div>
+          <div class="cart-items">
+            <p>Total</p>
+            <p class="total-amount">$0.00</p>
+          </div>
+          <button>Checkout</button>
+          <button class="cash-pay">Pay with Cash</button>
+          <div>
+            <form class="cash-form">
+              <label for="cash">Cash Tendered</label>
+              <input type="number" id="cash" name="cash" />
+              <button class="change-button">Get Change</button>
+            </form>
+            <p>Change - $0.00</p>
+          </div>
+          <button class="card-pay">Pay with Card</button>
+          <div class="hide">
+            <form class="card-form">
+              <label for="card-number">Card Number</label>
+              <input
+                id="card-number"
+                name="card-number"
+                type="tel"
+                inputmode="numeric"
+                pattern="[0-9\s]{13,19}"
+                maxlength="19"
+                placeholder="xxxx xxxx xxxx xxxx"
+              />
+              <label for="exp-date">Exp. Date</label>
+              <input
+                type="month"
+                id="exp-date"
+                name="exp-date"
+                placeholder="XX/XX"
+              />
+              <label for="cvv">cvv</label>
+              <input type="number" name="cvv" id="cvv" />
+              <button>Process Card</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
-
     <script src="script.js"></script>
   </body>
 </html>
