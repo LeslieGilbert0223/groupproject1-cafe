@@ -113,14 +113,16 @@ let display = (category) =>{
             let card =document.createElement("div");
             card.classList.add("card");
             let name = document.createElement("p");
+            name.classList.add("food-name");
             name.innerText = item.name;
             let description = document.createElement("p");
+            description.classList.add("food-description");
             description.innerText = item.description;
             let price = document.createElement("p");
+            price.classList.add("food-price");
             let number = item.price;
             let roundedNumber = number.toFixed(2);
             price.innerText = `$${roundedNumber}`
-            // price.innerText = item.price; //`${item.price}`;
             card.append(name, description, price);
             menuPopup.append(card);
         };
@@ -135,3 +137,4 @@ mainContainer.addEventListener("click", (e)=>{
         display(categoryD);
     };
 });
+
