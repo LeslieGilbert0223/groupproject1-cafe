@@ -147,6 +147,16 @@ let receiptButton = document.querySelector(".receipt-button");
 
 let receiptPopup = document.querySelector(".receipt-popup");
 
+let receiptListOfItems = document.querySelector(".receipt-list-of-items");
+
+let receiptSubtotalAmount = document.querySelector(".receipt-subtotal-amount");
+
+let receiptTaxesAmount = document.querySelector(".receipt-taxes-amount");
+
+let receiptTotalAmount = document.querySelector(".receipt-total-amount");
+
+let printButton = document.querySelector(".print-button");
+
 let cartArray = [];
 // console.log(cartArray);
 
@@ -255,38 +265,99 @@ cartMenu.addEventListener("click", (e) => {
   }
 });
 
-checkoutButton.addEventListener("click", ()=>{
+checkoutButton.addEventListener("click", () => {
   cashPay.classList.remove("hide");
   cardPay.classList.remove("hide");
 });
 
-cardPay.addEventListener("click", ()=>{
+cardPay.addEventListener("click", () => {
   cardFormContainer.classList.toggle("hide");
   cashPay.classList.toggle("hide");
 });
 
-cashPay.addEventListener("click", ()=>{
+cashPay.addEventListener("click", () => {
   cashFormContainer.classList.toggle("hide");
   cardPay.classList.toggle("hide");
 });
 
-cashForm.addEventListener("submit", (e)=>{
+cashForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let snapshot = new FormData(cashForm);
   let cashTendered = snapshot.get("cash");
-  changeTotal = cashTendered - total; 
+  changeTotal = cashTendered - total;
   changeTotal = changeTotal.toFixed(2);
   change.innerText = `Change - $${changeTotal}`;
+  change.classList.remove("hide");
   receiptButton.classList.remove("hide");
+  cashForm.reset();
 });
+
+let last4 = "";
+let cardReceiptItem = document.createElement("div");
 
 let displayReceipt = () => {
   cartArray.forEach((item) => {
-    
+    let receiptItem = document.createElement("div");
+    receiptItem.classList.add("cart-list-item");
+    let receiptNameP = document.createElement("p");
+    receiptNameP.innerText = item.name;
+    let receiptPriceP = document.createElement("p");
+    let price = item.price;
+    let priceRounded = price.toFixed(2);
+    receiptPriceP.innerText = `$${priceRounded}`;
+    receiptSubtotalAmount.innerText = `$${subtotal.toFixed(2)}`;
+    receiptTaxesAmount.innerText = `$${taxes.toFixed(2)}`;
+    receiptTotalAmount.innerText = `$${total.toFixed(2)}`;
+    receiptItem.append(receiptNameP, receiptPriceP);
+    receiptListOfItems.append(receiptItem);
   });
+  if (last4.length > 0) {
+    let cardReceiptP = document.createElement("p");
+    cardReceiptP.classList.add("credit-card-text");
+    cardReceiptP.innerText = `ACCT #:  ****************VISA ${last4}`;
+    cardReceiptItem.append(cardReceiptP);
+    receipt.append(cardReceiptItem);
+  } else {
+    cardReceiptItem.innerHTML = "";
+  }
 };
 
-receiptButton.addEventListener("click", ()=>{
+cardForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let snapshot = new FormData(cardForm);
+  let rawCardNumber = snapshot.get("card-number");
+  let cardNumberString = rawCardNumber.toString();
+  last4 = cardNumberString.slice(-5, -1);
+  receiptButton.classList.remove("hide");
+  cardForm.classList.add("hide");
+  cardForm.reset();
+});
+
+receiptButton.addEventListener("click", () => {
   receiptPopup.classList.remove("hide");
+  cartPopup.classList.add("hide");
+  receiptButton.classList.add("hide");
+  change.classList.add("hide");
   displayReceipt();
+});
+
+printButton.addEventListener("click", () => {
+  receiptPopup.classList.add("hide");
+  cartArray = [];
+  console.log(cartArray);
+  listOfItems.innerHTML = "";
+  subtotal = 0;
+  taxes = 0;
+  total = 0;
+  changeTotal = 0;
+  last4 = "";
+  subtotalAmount.innerText = `$${subtotal.toFixed(2)}`;
+  taxesAmount.innerText = `$${taxes.toFixed(2)}`;
+  totalAmount.innerText = `$${total.toFixed(2)}`;
+  change.innerText = `Change - $${changeTotal}`;
+  cashPay.classList.add("hide");
+  cardPay.classList.add("hide");
+  cardFormContainer.classList.add("hide");
+  cashFormContainer.classList.add("hide");
+  cardReceiptItem.innerHTML = "";
 });

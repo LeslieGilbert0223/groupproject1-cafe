@@ -36,8 +36,8 @@
           <button class="exit-button">
             <p class="exit-text">Back to Menu</p>
           </button>
+          <h3 class="cart-subheader">Your Items</h3>
           <div class="list-of-items">
-            <h3 class="cart-subheader">Your Items</h3>
             <div></div>
           </div>
           <div class="cart-items">
@@ -60,7 +60,7 @@
               <input type="number" id="cash" name="cash" />
               <button class="change-button">Get Change</button>
             </form>
-            <p class="change">Change - $0.00</p>
+            <p class="change hide">Change - $0.00</p>
           </div>
           <button class="card-pay hide">Pay with Card</button>
           <div class="hide card-form-container">
@@ -88,11 +88,30 @@
             </form>
           </div>
           <button class="receipt-button hide">Receipt</button>
-
         </div>
       </div>
       <div class="receipt-popup hide">
-        <div class="receipt"></div>
+        <div class="receipt">
+          <h2 class="cart-header">Your Receipt</h2>
+          <h3 class="cart-subheader">Your Items</h3>
+          <div class="receipt-list-of-items">
+            <div></div>
+          </div>
+          <div class="cart-items">
+            <p>Subtotal</p>
+            <p class="receipt-subtotal-amount">$0.00</p>
+          </div>
+          <div class="cart-items">
+            <p>Taxes</p>
+            <p class="receipt-taxes-amount">$0.00</p>
+          </div>
+          <div class="cart-items">
+            <p>Total</p>
+            <p class="receipt-total-amount">$0.00</p>
+          <button class="print-button">
+            <p class="print-text">Print Receipt</p>
+          </button>
+        </div>
       </div>
     </main>
     <script src="script.js"></script>
