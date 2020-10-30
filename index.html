@@ -53,17 +53,17 @@
             <p class="total-amount">$0.00</p>
           </div>
           <button class="checkout-button">Checkout</button>
-          <button class="cash-pay">Pay with Cash</button>
-          <div>
+          <button class="cash-pay hide">Pay with Cash</button>
+          <div class="hide cash-form-container">
             <form class="cash-form">
               <label for="cash">Cash Tendered</label>
               <input type="number" id="cash" name="cash" />
               <button class="change-button">Get Change</button>
             </form>
-            <p>Change - $0.00</p>
+            <p class="change">Change - $0.00</p>
           </div>
-          <button class="card-pay">Pay with Card</button>
-          <div class="hide">
+          <button class="card-pay hide">Pay with Card</button>
+          <div class="hide card-form-container">
             <form class="card-form">
               <label for="card-number">Card Number</label>
               <input
@@ -87,7 +87,12 @@
               <button>Process Card</button>
             </form>
           </div>
+          <button class="receipt-button hide">Receipt</button>
+
         </div>
+      </div>
+      <div class="receipt-popup hide">
+        <div class="receipt"></div>
       </div>
     </main>
     <script src="script.js"></script>

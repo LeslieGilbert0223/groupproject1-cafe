@@ -123,6 +123,30 @@ let taxesAmount = document.querySelector(".taxes-amount");
 
 let totalAmount = document.querySelector(".total-amount");
 
+let cashPay = document.querySelector(".cash-pay");
+
+let cardPay = document.querySelector(".card-pay");
+
+let checkoutButton = document.querySelector(".checkout-button");
+
+let cashFormContainer = document.querySelector(".cash-form-container");
+
+let cardFormContainer = document.querySelector(".card-form-container");
+
+let cashForm = document.querySelector(".cash-form");
+
+let cardForm = document.querySelector(".card-form");
+
+let change = document.querySelector(".change");
+
+let changeButton = document.querySelector(".change-button");
+
+let receipt = document.querySelector(".receipt");
+
+let receiptButton = document.querySelector(".receipt-button");
+
+let receiptPopup = document.querySelector(".receipt-popup");
+
 let cartArray = [];
 // console.log(cartArray);
 
@@ -169,6 +193,7 @@ let display = (category) => {
 let subtotal = 0;
 let taxes = 0;
 let total = 0;
+let changeTotal = 0;
 
 let displayCart = () => {
   cartArray.forEach((item) => {
@@ -228,4 +253,40 @@ cartMenu.addEventListener("click", (e) => {
   if (e.target.classList.contains("exit-button")) {
     cartPopup.classList.add("hide");
   }
+});
+
+checkoutButton.addEventListener("click", ()=>{
+  cashPay.classList.remove("hide");
+  cardPay.classList.remove("hide");
+});
+
+cardPay.addEventListener("click", ()=>{
+  cardFormContainer.classList.toggle("hide");
+  cashPay.classList.toggle("hide");
+});
+
+cashPay.addEventListener("click", ()=>{
+  cashFormContainer.classList.toggle("hide");
+  cardPay.classList.toggle("hide");
+});
+
+cashForm.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  let snapshot = new FormData(cashForm);
+  let cashTendered = snapshot.get("cash");
+  changeTotal = cashTendered - total; 
+  changeTotal = changeTotal.toFixed(2);
+  change.innerText = `Change - $${changeTotal}`;
+  receiptButton.classList.remove("hide");
+});
+
+let displayReceipt = () => {
+  cartArray.forEach((item) => {
+    
+  });
+};
+
+receiptButton.addEventListener("click", ()=>{
+  receiptPopup.classList.remove("hide");
+  displayReceipt();
 });
