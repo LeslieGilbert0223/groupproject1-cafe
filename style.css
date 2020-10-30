@@ -173,10 +173,6 @@ button {
   z-index: 2;
 }
 
-.hide {
-  display: none;
-}
-
 .cart-menu {
   position: relative;
   height: 80%;
@@ -197,7 +193,7 @@ button {
 }
 
 .cart-subheader {
-  margin: 15px 0;
+  margin-top: 30px;
   font-size: 24px;
 }
 
@@ -248,11 +244,19 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
 }
 
 .change-button {
   margin-top: 10px;
+  width: 120px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #d1d1d1;
+  color: #000;
+  font-size: 16px;
 }
 
 .card-form {
@@ -268,7 +272,14 @@ button {
   font-size: 16px;
 }
 
-/* .receipt-popup {
+.change {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* RECEIPT */
+
+.receipt-popup {
   position: fixed;
   height: 100vh;
   width: 100%;
@@ -278,8 +289,67 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 3;
-} */
+  z-index: 2;
+}
+
+.receipt {
+  position: relative;
+  height: 80%;
+  width: 50%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.receipt-list-of-items {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.receipt-button {
+  width: 120px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #d1d1d1;
+  color: #000;
+  font-size: 16px;
+}
+
+.credit-card-text {
+  font-size: 18px;
+}
+
+.print-button {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  bottom: -30px;
+  right: 50%;
+  transform: translate(50%, 30%);
+  border-radius: 10px;
+  width: 120px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #d1d1d1;
+  color: #000;
+}
+
+.print-text {
+  font-size: 12px;
+}
+
+.hide {
+  display: none;
+}
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
