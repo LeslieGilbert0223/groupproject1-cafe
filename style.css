@@ -2,7 +2,9 @@
 body,
 p,
 h2,
-h3 {
+h3,
+img,
+button {
   margin: 0;
   padding: 0;
 }
@@ -10,17 +12,25 @@ h3 {
 .body {
   background-color: #d1d1d1;
   height: 100vh;
+  font-family: "Darker Grotesque", sans-serif;
 }
-
+/* MAIN HEADER */
 .header {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: #032b43;
 }
 
 .logo {
   color: #136f63;
-  margin-left: 20px;
+}
+
+.logo-img {
+  width: 200px;
+  object-fit: contain;
+  margin: 20px 0;
 }
 
 .link {
@@ -28,9 +38,12 @@ h3 {
 }
 
 .cart-button {
-  margin: 10px;
+  height: 60px;
+  width: 80px;
+  margin-right: 10px;
 }
 
+/* MAIN CONTAINER  */
 .main-container {
   height: 80vh;
   display: flex;
@@ -52,7 +65,10 @@ h3 {
   justify-content: center;
   align-items: center;
   font-size: 30px;
+  font-family: "Darker Grotesque", sans-serif;
+  font-weight: 500;
   box-shadow: -5px 5px #3a3a3a;
+  letter-spacing: 2px;
 }
 
 .popup {
@@ -99,7 +115,8 @@ h3 {
 }
 
 .card {
-  background-color: #d1d1d1;
+  background-color: #136f63;
+  color: #fff;
   width: 70%;
   height: 20%;
   margin: 10px;
@@ -114,15 +131,31 @@ h3 {
 
 .food-name {
   font-size: 22px;
+  font-weight: bold;
 }
 
 .food-description {
   font-size: 14px;
   text-align: center;
-  padding: 10px 5px;
+  padding: 5px;
+  line-height: 90%;
 }
 
 .food-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add-to-button {
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+}
+
+.add-to-text {
+  font-family: "Darker Grotesque", sans-serif;
+  font-weight: bold;
   font-size: 16px;
 }
 
@@ -159,34 +192,56 @@ h3 {
 
 .cart-header {
   position: absolute;
-  top: 20px;
-  font-size: 40px;
+  top: 10px;
+  font-size: 30px;
 }
 
 .cart-subheader {
   margin: 15px 0;
+  font-size: 24px;
 }
 
 .cart-items {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 5px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .list-of-items {
   width: 100%;
   margin-bottom: 10px;
+  margin-top: 30px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .cart-list-item {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  font-size: 20px;
+}
+
+.checkout-button {
+  width: 120px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #032b43;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 .cash-pay {
-  margin: 15px;
+  width: 120px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #136f63;
+  color: #fff;
+  font-size: 16px;
 }
 
 .cash-form {
@@ -205,11 +260,19 @@ h3 {
   flex-direction: column;
 }
 
+.card-pay {
+  width: 120px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #eea928;
+  font-size: 16px;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 
