@@ -101,7 +101,7 @@ let menu = [
     price: 3.0,
   },
 ];
-console.log(menu);
+// console.log(menu);
 
 let menuPopup = document.querySelector(".menu-popup");
 
@@ -194,7 +194,7 @@ let display = (category) => {
       menuPopup.append(card);
       card.addEventListener("click", () => {
         cartArray.push(item);
-        console.log(cartArray);
+        // console.log(cartArray);
       });
     }
   });
@@ -232,7 +232,7 @@ mainContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("menu-category")) {
     let categoryD = e.target.getAttribute("data-category");
     popup.classList.remove("hide");
-    console.log(categoryD);
+    // console.log(categoryD);
     display(categoryD);
   }
 });
@@ -356,7 +356,7 @@ receiptButton.addEventListener("click", () => {
 printButton.addEventListener("click", () => {
   receiptPopup.classList.add("hide");
   cartArray = [];
-  console.log(cartArray);
+  // console.log(cartArray);
   receiptListOfItems.innerHTML = "";
   listOfItems.innerHTML = "";
   subtotal = 0;
