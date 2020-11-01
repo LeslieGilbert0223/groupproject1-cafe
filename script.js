@@ -229,7 +229,7 @@ let displayCart = () => {
 };
 
 mainContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("menu-category")) {
+  if (e.target.classList.contains("menu-select")) {
     let categoryD = e.target.getAttribute("data-category");
     popup.classList.remove("hide");
     // console.log(categoryD);
