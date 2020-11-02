@@ -226,12 +226,14 @@ button {
 
 .cart-name {
   text-align: center;
-  width: 100px;
-  margin-left: 10px;
+  width: 500px;
+  /* margin-left: 10px; */
 }
 .item-delete {
   padding: 5px;
   order: 1;
+  width: 30px;
+  height: 30px;
 }
 
 .checkout-button {

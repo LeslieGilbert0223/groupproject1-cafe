@@ -396,7 +396,7 @@ const visaValidation = (cardNumber) => {
   }
 };
 
-console.log(visaValidation("4297658942156599"));
+// console.log(visaValidation("4297658942156599"));
 
 cardForm.addEventListener("submit", (e) => {
   e.preventDefault();
