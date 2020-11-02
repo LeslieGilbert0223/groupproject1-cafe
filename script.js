@@ -377,4 +377,5 @@ printButton.addEventListener("click", () => {
   cardFormContainer.classList.add("hide");
   cashFormContainer.classList.add("hide");
   cardReceiptItem.innerHTML = "";
+  cashReceiptItem.innerHTML = "";
 });
