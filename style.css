@@ -221,7 +221,7 @@ button {
 }
 
 .cart-price {
-  margin: 0 10px 0 250px;
+  margin: 0 10px 0 225px;
 }
 
 .cart-name {
@@ -229,6 +229,7 @@ button {
   width: 500px;
   /* margin-left: 10px; */
 }
+
 .item-delete {
   padding: 5px;
   order: 1;
@@ -408,10 +409,10 @@ button {
   }
 
   .cart-menu {
-    width: 500px;
+    width: 600px;
   }
 
   .cart-price {
-    margin: 0 10px 0 350px;
+    margin: 0 10px 0 325px;
   }
 }
