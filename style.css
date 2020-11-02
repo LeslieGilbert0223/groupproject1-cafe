@@ -176,7 +176,7 @@ button {
 .cart-menu {
   position: relative;
   height: 80%;
-  width: 70%;
+  width: 400px;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -216,8 +216,22 @@ button {
 .cart-list-item {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-size: 20px;
+}
+
+.cart-price {
+  margin: 0 10px 0 250px;
+}
+
+.cart-name {
+  text-align: center;
+  width: 100px;
+  margin-left: 10px;
+}
+.item-delete {
+  padding: 5px;
+  order: 1;
 }
 
 .checkout-button {
@@ -290,6 +304,12 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 2;
+}
+
+.receipt-logo {
+  width: 350px;
+  position: absolute;
+  opacity: 0.2;
 }
 
 .receipt {
@@ -386,6 +406,10 @@ button {
   }
 
   .cart-menu {
-    width: 30%;
+    width: 500px;
+  }
+
+  .cart-price {
+    margin: 0 10px 0 350px;
   }
 }

@@ -207,15 +207,32 @@ let changeTotal = 0;
 let cashTendered = 0;
 
 let displayCart = () => {
-  cartArray.forEach((item) => {
+  listOfItems.innerHTML = "";
+  subtotal = 0;
+  taxes = 0;
+  total = 0;
+    cartArray.forEach((item, index) => {
     let cartItem = document.createElement("div");
     cartItem.classList.add("cart-list-item");
     let cartNameP = document.createElement("p");
     cartNameP.innerText = item.name;
+    cartNameP.classList.add("cart-name");
     let cartPriceP = document.createElement("p");
     let price = item.price;
     let priceRounded = price.toFixed(2);
     cartPriceP.innerText = `$${priceRounded}`;
+    cartPriceP.classList.add("cart-price");
+    let itemDeleteButton = document.createElement("button");
+    itemDeleteButton.classList.add("item-delete");
+    itemDeleteButton.innerText = "X";
+    itemDeleteButton.addEventListener("click", () => {
+      cartArray.splice(index, 1);
+      subtotal -= item.price;
+      taxes = subtotal * 0.06;
+      total = subtotal + taxes;
+      refreshCart();
+    });
+
     // CART MATH
     subtotal += item.price;
     subtotalAmount.innerText = `$${subtotal.toFixed(2)}`;
@@ -223,10 +240,46 @@ let displayCart = () => {
     taxesAmount.innerText = `$${taxes.toFixed(2)}`;
     total = subtotal + taxes;
     totalAmount.innerText = `$${total.toFixed(2)}`;
-    cartItem.append(cartNameP, cartPriceP);
+    cartItem.append(cartNameP, cartPriceP, itemDeleteButton);
+    listOfItems.append(cartItem);
+
+  });
+};
+
+const refreshCart = () => {
+  listOfItems.innerHTML = "";
+  subtotalAmount.innerText = `$${subtotal.toFixed(2)}`;
+    taxesAmount.innerText = `$${taxes.toFixed(2)}`;
+    totalAmount.innerText = `$${total.toFixed(2)}`;
+  cartArray.forEach((item, index) => {
+    let cartItem = document.createElement("div");
+    cartItem.classList.add("cart-list-item");
+    let cartNameP = document.createElement("p");
+    cartNameP.innerText = item.name;
+    cartNameP.classList.add("cart-name");
+    let cartPriceP = document.createElement("p");
+    let price = item.price;
+    let priceRounded = price.toFixed(2);
+    cartPriceP.innerText = `$${priceRounded}`;
+    cartPriceP.classList.add("cart-price");
+    let itemDeleteButton = document.createElement("button");
+    itemDeleteButton.classList.add("item-delete");
+    itemDeleteButton.innerText = "X";
+    itemDeleteButton.addEventListener("click", () => {
+      cartArray.splice(index, 1);
+      subtotal -= item.price;
+      taxes = subtotal * 0.06;
+      total = subtotal + taxes;
+      refreshCart();
+      console.log(cartArray);
+    });
+    
+    cartItem.append(cartNameP, cartPriceP, itemDeleteButton);
     listOfItems.append(cartItem);
   });
 };
+
+
 
 mainContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("menu-select")) {
@@ -290,6 +343,7 @@ cashForm.addEventListener("submit", (e) => {
   change.innerText = `Change - $${changeTotal}`;
   change.classList.remove("hide");
   receiptButton.classList.remove("hide");
+  cashForm.classList.add("hide");
   cashForm.reset();
 });
 
@@ -333,16 +387,32 @@ let displayReceipt = () => {
   }
 };
 
+const visaValidation = (cardNumber) => {
+  let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  if (cardNumber.match(visaCheck)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(visaValidation("4297658942156599"));
+
 cardForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let snapshot = new FormData(cardForm);
   let rawCardNumber = snapshot.get("card-number");
   let cardNumberString = rawCardNumber.toString();
-  last4 = cardNumberString.slice(-5, -1);
+  if (visaValidation(cardNumberString)) {
+  last4 = cardNumberString.slice(-5, -1); 
   receiptButton.classList.remove("hide");
   cardForm.classList.add("hide");
   cardPay.classList.add("hide");
+  cardForm.reset(); 
+} else {
+  alert("Not a valid card number");
   cardForm.reset();
+}
 });
 
 receiptButton.addEventListener("click", () => {
@@ -374,6 +444,7 @@ printButton.addEventListener("click", () => {
   change.innerText = `Change - $${changeTotal}`;
   cashPay.classList.add("hide");
   cardForm.classList.remove("hide");
+  cashForm.classList.remove("hide");
   cardFormContainer.classList.add("hide");
   cashFormContainer.classList.add("hide");
   cardReceiptItem.innerHTML = "";
