@@ -101,7 +101,7 @@ let menu = [
     price: 3.0,
   },
 ];
-console.log(menu);
+// console.log(menu);
 
 let menuPopup = document.querySelector(".menu-popup");
 
@@ -194,7 +194,7 @@ let display = (category) => {
       menuPopup.append(card);
       card.addEventListener("click", () => {
         cartArray.push(item);
-        console.log(cartArray);
+        // console.log(cartArray);
       });
     }
   });
@@ -204,6 +204,7 @@ let subtotal = 0;
 let taxes = 0;
 let total = 0;
 let changeTotal = 0;
+let cashTendered = 0;
 
 let displayCart = () => {
   cartArray.forEach((item) => {
@@ -228,10 +229,10 @@ let displayCart = () => {
 };
 
 mainContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("menu-category")) {
+  if (e.target.classList.contains("menu-select")) {
     let categoryD = e.target.getAttribute("data-category");
     popup.classList.remove("hide");
-    console.log(categoryD);
+    // console.log(categoryD);
     display(categoryD);
   }
 });
@@ -283,7 +284,7 @@ cashPay.addEventListener("click", () => {
 cashForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let snapshot = new FormData(cashForm);
-  let cashTendered = snapshot.get("cash");
+  cashTendered = snapshot.get("cash");
   changeTotal = cashTendered - total;
   changeTotal = changeTotal.toFixed(2);
   change.innerText = `Change - $${changeTotal}`;
@@ -294,6 +295,7 @@ cashForm.addEventListener("submit", (e) => {
 
 let last4 = "";
 let cardReceiptItem = document.createElement("div");
+let cashReceiptItem = document.createElement("div");
 
 let displayReceipt = () => {
   cartArray.forEach((item) => {
@@ -317,7 +319,16 @@ let displayReceipt = () => {
     cardReceiptP.innerText = `ACCT #:  ****************VISA ${last4}`;
     cardReceiptItem.append(cardReceiptP);
     receipt.append(cardReceiptItem);
+    cashReceiptItem.innerHTML = "";
   } else {
+    let cashReceiptP = document.createElement("p");
+    cashReceiptP.classList.add("credit-card-text");
+    let cashChangeReceiptP = document.createElement("p");
+    cashChangeReceiptP.classList.add("credit-card-text");
+    cashReceiptP.innerText = `Cash tendered - $${cashTendered}`;
+    cashChangeReceiptP.innerText = `Change - $${changeTotal}`;
+    cashReceiptItem.append(cashReceiptP, cashChangeReceiptP);
+    receipt.append(cashReceiptItem);
     cardReceiptItem.innerHTML = "";
   }
 };
@@ -330,6 +341,7 @@ cardForm.addEventListener("submit", (e) => {
   last4 = cardNumberString.slice(-5, -1);
   receiptButton.classList.remove("hide");
   cardForm.classList.add("hide");
+  cardPay.classList.add("hide");
   cardForm.reset();
 });
 
@@ -344,19 +356,24 @@ receiptButton.addEventListener("click", () => {
 printButton.addEventListener("click", () => {
   receiptPopup.classList.add("hide");
   cartArray = [];
-  console.log(cartArray);
+  // console.log(cartArray);
+  receiptListOfItems.innerHTML = "";
   listOfItems.innerHTML = "";
   subtotal = 0;
   taxes = 0;
   total = 0;
   changeTotal = 0;
+  cashTendered = 0;
   last4 = "";
   subtotalAmount.innerText = `$${subtotal.toFixed(2)}`;
   taxesAmount.innerText = `$${taxes.toFixed(2)}`;
   totalAmount.innerText = `$${total.toFixed(2)}`;
+  receiptSubtotalAmount.innerText = "$0.00";
+  receiptTaxesAmount.innerText = "$0.00";
+  receiptTotalAmount.innerText = "$0.00";
   change.innerText = `Change - $${changeTotal}`;
   cashPay.classList.add("hide");
-  cardPay.classList.add("hide");
+  cardForm.classList.remove("hide");
   cardFormContainer.classList.add("hide");
   cashFormContainer.classList.add("hide");
   cardReceiptItem.innerHTML = "";
